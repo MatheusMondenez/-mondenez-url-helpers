@@ -1,5 +1,5 @@
 {
-  "name": "@mondenez/url-helpers",
+  "name": "mondenez-url-helpers",
   "version": "1.0.0",
   "description": "A package of useful methods for URLs.",
   "main": "index.js",
