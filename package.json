@@ -1,0 +1,24 @@
+{
+  "name": "@mondenez/url-helpers",
+  "version": "1.0.0",
+  "description": "A package of useful methods for URLs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusMondenez/mondenez-url-helpers.git"
+  },
+  "keywords": [
+    "mondenez",
+    "url",
+    "helpers"
+  ],
+  "author": "Matheus Mondenez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatheusMondenez/mondenez-url-helpers/issues"
+  },
+  "homepage": "https://github.com/MatheusMondenez/mondenez-url-helpers#readme"
+}
