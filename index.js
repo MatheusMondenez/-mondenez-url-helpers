@@ -9,17 +9,17 @@
  * @returns {String}
  *
  */
-export const mountEndpointParams = (endpoint, ...params) => {
-  if (this.hasParam(endpoint)) {
+const mountEndpointParams = (endpoint, ...params) => {
+  if (hasParams(endpoint)) {
     endpoint.split('/').forEach((section, index) => {
-      if (this.isOptionalParam(section)) {
+      if (isOptionalParam(section)) {
         if (params[index]) {
           endpoint = endpoint.replace(section, params[index]);
         } else {
           endpoint = endpoint.replace(section, '');
           endpoint = endpoint.replace(/\/+$/, '');
         }
-      } else if (this.isRequiredParam(section)) {
+      } else if (isRequiredParam(section)) {
         endpoint = endpoint.replace(section, params[index]);
       }
     });
@@ -37,7 +37,7 @@ export const mountEndpointParams = (endpoint, ...params) => {
  * @returns {String}
  *
  */
-export const addQueryString = (endpoint, queryStrings) => {
+const addQueryString = (endpoint, queryStrings) => {
   Object.keys(queryStrings).forEach((item, index) => {
     if (index === 0) {
       endpoint += `?${item}=${queryStrings[item]}`;
@@ -57,7 +57,7 @@ export const addQueryString = (endpoint, queryStrings) => {
  * @returns {Boolean}
  *
  */
-export const hasParam = (endpoint) => {
+const hasParams = (endpoint) => {
   return endpoint.indexOf(':') >= 0;
 }
 
@@ -69,8 +69,8 @@ export const hasParam = (endpoint) => {
  * @returns {Boolean}
  *
  */
-export const isRequiredParam = (section) => {
-  return this.hasParam(section) && section.indexOf('?') >= 0;
+const isRequiredParam = (section) => {
+  return hasParams(section) && section.indexOf('?') < 0;
 }
 
 /**
@@ -81,6 +81,14 @@ export const isRequiredParam = (section) => {
  * @returns {Boolean}
  *
  */
-export const isOptionalParam = (section) => {
-  return this.hasParam(section) && section.indexOf('?') < 0;
+const isOptionalParam = (section) => {
+  return hasParams(section) && section.indexOf('?') >= 0;
+}
+
+module.exports = {
+  mountEndpointParams,
+  addQueryString,
+  hasParams,
+  isRequiredParam,
+  isOptionalParam,
 }
